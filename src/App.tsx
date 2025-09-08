@@ -2,7 +2,7 @@ import {
   loginWithGithub,
   loginWithGoogle,
   logout,
-} from './redux/features/authAction';
+} from './redux/features/auth/authAction';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import type { RootState } from './redux/store';
 
@@ -16,6 +16,7 @@ function App() {
       <h1 className="font-extrabold capitalize">
         {user ? user.displayName : 'HI'}
       </h1>
+      <img src={user?.photoURL || '/userphoto.jpg'} alt="user photo" />
       <button
         onClick={() => dispatch(loginWithGoogle())}
         className="capitalize font-semibold text-white bg-black rounded p-2 mt-10"

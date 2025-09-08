@@ -1,9 +1,13 @@
-import { auth, githubProvider, googleProvider } from '../../firebae/firebase.config';
+import {
+  auth,
+  githubProvider,
+  googleProvider,
+} from '../../../firebase/firebase.config';
 import { setUser, clearUser, setLoading } from './authSlice';
 import { signInWithPopup, signOut } from 'firebase/auth';
-import type { AppDispatch } from "../store";
+import type { AppDispatch } from '../../store';
 
-export const loginWithGoogle = () => async (dispatch:AppDispatch) => {
+export const loginWithGoogle = () => async (dispatch: AppDispatch) => {
   try {
     dispatch(setLoading(true));
     const result = await signInWithPopup(auth, googleProvider);
@@ -23,7 +27,7 @@ export const loginWithGoogle = () => async (dispatch:AppDispatch) => {
   }
 };
 
-export const loginWithGithub = () => async (dispatch:AppDispatch) => {
+export const loginWithGithub = () => async (dispatch: AppDispatch) => {
   try {
     dispatch(setLoading(true));
     const result = await signInWithPopup(auth, githubProvider);
@@ -43,7 +47,7 @@ export const loginWithGithub = () => async (dispatch:AppDispatch) => {
   }
 };
 
-export const logout = () => async (dispatch:AppDispatch) => {
+export const logout = () => async (dispatch: AppDispatch) => {
   await signOut(auth);
   dispatch(clearUser());
 };
