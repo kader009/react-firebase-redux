@@ -17,6 +17,9 @@ function App() {
         {user ? user.displayName : 'HI'}
       </h1>
       <img src={user?.photoURL || '/userphoto.jpg'} alt="user photo" />
+
+      <div className='space-x-2'>
+
       <button
         onClick={() => dispatch(loginWithGoogle())}
         className="capitalize font-semibold text-white bg-black rounded p-2 mt-10"
@@ -35,6 +38,7 @@ function App() {
       >
         logout
       </button>
+      </div>
     </main>
   );
 }
